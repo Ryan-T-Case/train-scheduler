@@ -15,8 +15,69 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="bg-dark">
+    <!-- Application Content -->
+    <div class="container bg-light pt-3 px-3">
+        <div class="jumbotron text-center text-light bg-primary">
+            <h1 class="display-4">Case Railways Train Scheduler</h1>
+            <hr class="bg-light my-4">
+            <p class="lead">&quot;We Always Stay on Track!&quot;</p>
+        </div>
+        <!-- Trains Currently on the Schedule -->
+        <div class="card my-3">
+            <div class="card-header bg-primary text-light">
+                Current Train Schedule
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope="col">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <!-- Newly Added Trains Will Append to Table Here -->
+                    <tbody id="train-table-rows">
 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Form to Add a Train to the Schedule -->
+        <div class="card my-3">
+            <div class="card-header bg-primary text-light">
+                Add Train to Schedule
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="train-name-input">Train Name</label>
+                        <input type="text" class="form-control" id="train-name-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination-input">Destination</label>
+                        <input type="text" class="form-control" id="destination-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="initial-time-input">First Train Time (HH:mm - Military Time)</label>
+                        <input type="text" class="form-control" id="initial-time-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="frequency-input">Frequency (min)</label>
+                        <input type="number" class="form-control" id="frequency-input">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+                </form>
+            </div>
+        </div>
+        <!-- Footer with Copyright Info -->
+        <footer class="rounded text-center text-light bg-primary mt-4 p-3 w-100">
+            <p>© 2018 Ryan Case</p>
+        </footer>
+    </div>
     <!-- Link to jQuery CDN Version 3.3.1 minified -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
