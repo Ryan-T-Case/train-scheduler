@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Train Scheduler App</title>
+    <link rel="icon" href="assets/images/favicon.png">
     <!-- Link to External Reset CSS File -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <!-- Link to Bootstrap CDN -->
@@ -15,11 +16,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="bg-dark">
+<body>
     <!-- Application Content -->
-    <div class="container bg-light pt-3 px-3">
+    <div class="container bg-light pt-4 px-4">
         <div class="jumbotron text-center text-light bg-primary">
-            <h1 class="display-4">Case Railways - Train Scheduler</h1>
+            <img src="assets/images/logo.png" alt="Case Railways Logo" class="img-fluid rounded m-3">
+            <h1 class="display-4">Train Scheduler</h1>
             <hr class="bg-light my-4">
             <p class="lead">&quot;We Always Stay on Track!&quot;</p>
         </div>
@@ -29,7 +31,7 @@
                 Current Train Schedule
             </div>
             <div class="card-body">
-                <table class="table">
+                <table class="table table-responsive-sm table-bordered table-hover">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">Train Name</th>
@@ -55,19 +57,19 @@
                 <form>
                     <div class="form-group">
                         <label for="train-name-input">Train Name</label>
-                        <input type="text" class="form-control" id="train-name-input">
+                        <input type="text" class="form-control" id="train-name-input" placeholder="The River City Express">
                     </div>
                     <div class="form-group">
                         <label for="destination-input">Destination</label>
-                        <input type="text" class="form-control" id="destination-input">
+                        <input type="text" class="form-control" id="destination-input" placeholder="Richmond, VA">
                     </div>
                     <div class="form-group">
                         <label for="initial-time-input">First Train Time (HH:mm - Military Time)</label>
-                        <input type="text" class="form-control" id="initial-time-input">
+                        <input type="text" class="form-control" id="initial-time-input" placeholder="18:30">
                     </div>
                     <div class="form-group">
                         <label for="frequency-input">Frequency (min)</label>
-                        <input type="number" class="form-control" id="frequency-input">
+                        <input type="number" class="form-control" id="frequency-input" placeholder="0">
                     </div>
                     <button type="submit" class="btn btn-primary" id="add-train">Submit</button>
                 </form>
