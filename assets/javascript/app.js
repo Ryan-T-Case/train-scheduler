@@ -16,40 +16,46 @@ var database = firebase.database();
 //Submit button that adds new trains to the database when clicked
 $("#add-train").on("click", function (event) {
     event.preventDefault();
-
     //Get the user input
     var trainName = $("#train-name-input").val().trim();
     var trainDestination = $("#destination-input").val().trim();
     //The time input is converted to unix time to be stored in Firebase
     var trainFirstTime = moment($("#initial-time-input").val().trim(), "HH:mm").format("X");
     var trainFrequency = $("#frequency-input").val().trim();
+    //Prevent form from being submitted if one or more fields does not have a value
+    if ((trainName === "") || (trainDestination === "") || (trainFirstTime === "") || (trainFrequency === "")) {
+        alert("The form cannot be submitted because one or more fields has no value");
+    } else if (trainFirstTime === "Invalid date") {
+        //Prevent form from being submitted if an invalid start time is entered
+        alert("Please enter a valid start time");
+    } else {
+        //Temporarily hold the train data in an object
+        var newTrain = {
+            name: trainName,
+            destination: trainDestination,
+            time: trainFirstTime,
+            frequency: trainFrequency
+        };
 
-    //Temporarily hold the train data in an object
-    var newTrain = {
-        name: trainName,
-        destination: trainDestination,
-        time: trainFirstTime,
-        frequency: trainFrequency
-    };
+        //Upload new train data to the database
+        database.ref().push(newTrain);
 
-    //Upload new train data to the database
-    database.ref().push(newTrain);
+        //Log all user inputs to the console to check values
+        console.log("Stored Data");
+        console.log("Name: " + newTrain.name);
+        console.log("Destination: " + newTrain.destination);
+        console.log("Time: " + newTrain.time);
+        console.log("Frequency: " + newTrain.frequency);
 
-    //Log all user inputs to the console to check values
-    console.log("Stored Data");
-    console.log("Name: " + newTrain.name);
-    console.log("Destination: " + newTrain.destination);
-    console.log("Time: " + newTrain.time);
-    console.log("Frequency: " + newTrain.frequency);
+        //Notify the user that they successfully added a train to the schedule
+        alert("New Train Added Successfully");
 
-    //Notify the user that they successfully added a train to the schedule
-    alert("New Train Added Successfully");
-
-    //Clear all input fields
-    $("#train-name-input").val("");
-    $("#destination-input").val("");
-    $("#initial-time-input").val("");
-    $("#frequency-input").val("");
+        //Clear all input fields
+        $("#train-name-input").val("");
+        $("#destination-input").val("");
+        $("#initial-time-input").val("");
+        $("#frequency-input").val("");
+    }
 });
 
 //Retrieve new train data from the database and add to the scheduler table
