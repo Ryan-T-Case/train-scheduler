@@ -114,10 +114,7 @@ database.ref().on("child_added", function (childSnapshot) {
         $("<td>").text(trainDestination),
         $("<td>").text(trainFrequency),
         $("<td>").text(nextTrainConverted),
-        $("<td>").text(tMinutesAway),
-        $("<td>").html(`
-        <button class="btn btn-primary delete-button">Delete</button>
-        `)
+        $("<td>").text(tMinutesAway)
     );
 
     //And append the new row to the train scheduler table
